@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bayu Irfan | Toko Kue awaw</title>
+
+    <style>
+        /* =========================
+           RESET & DASAR
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fffaf7;
+            color: #3d2924;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+        nav {
+            background-color: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #9b5c45;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #3d2924;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #b96f52;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            gap: 40px;
+            background: linear-gradient(
+                135deg,
+                #fff1e8,
+                #ffe1d2
+            );
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: #7d4433;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #65483f;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            background-color: #9b5c45;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #713e2f;
+            transform: translateY(-2px);
+        }
+
+        .hero img {
+            width: 430px;
+            max-width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #7d4433;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #725c55;
+        }
+
+        /* =========================
+           PROFIL
+        ========================= */
+        .profile {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-text h3 {
+            color: #9b5c45;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .profile-text p {
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            flex: 1;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .info-box p {
+            margin-bottom: 12px;
+        }
+
+        .info-box strong {
+            color: #9b5c45;
+        }
+
+        /* =========================
+           PRODUK
+        ========================= */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #7d4433;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #725c55;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #b45f3f;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           KEUNGGULAN
+        ========================= */
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .advantage {
+            background-color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .advantage .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .advantage h3 {
+            color: #7d4433;
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           KONTAK
+        ========================= */
+        .contact {
+            background-color: #ffe9dd;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            color: #7d4433;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background-color: #3d2924;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .profile {
+                flex-direction: column;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .advantages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 50px 6%;
+            }
+
+            .hero-text h1 {
+                font-size: 34px;
+            }
+
+            section {
+                padding: 50px 6%;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <nav>
+        <div class="logo">🍰 Bayu Irfan bakker aw aw</div>
+
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+            <h1>Kue Manis untuk Momen Spesial</h1>
+
+            <p>
+                Selamat datang di Manis Bakery.
+                Kami menyediakan berbagai macam kue dan
+                dessert dengan rasa lezat dan dibuat menggunakan
+                bahan-bahan berkualitas.
+            </p>
+
+            <a href="#produk" class="btn">
+                Lihat Produk
+            </a>
+        </div>
+
+        <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
+            alt="Kue Manis Bakery"
+        >
+
+    </section>
+
+
+    <!-- =========================
+         PROFIL TOKO
+    ========================== -->
+    <section id="profil">
+
+        <div class="section-title">
+            <h2>Tentang Kami</h2>
+            <p>Mengenal lebih dekat Manis Bakery</p>
+        </div>
+
+        <div class="profile">
+
+            <div class="profile-text">
+
+                <h3>Manis Bakery</h3>
+
+                <p>
+                    Manis Bakery adalah usaha yang bergerak
+                    di bidang makanan dan menyediakan berbagai
+                    macam kue untuk kebutuhan sehari-hari maupun
+                    acara spesial.
+                </p>
+
+                <p>
+                    Kami mengutamakan kualitas bahan, rasa,
+                    kebersihan, dan pelayanan kepada pelanggan.
+                    Setiap produk dibuat dengan penuh perhatian
+                    agar pelanggan mendapatkan pengalaman terbaik.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <p>
+                    <strong>📍 Alamat:</strong><br>
+                    Jl. Contoh No. 123, Magelang, Jawa Tengah
+                </p>
+
+                <p>
+                    <strong>📞 WhatsApp:</strong><br>
+                    0812-3456-7890
+                </p>
+
+                <p>
+                    <strong>🕐 Jam Buka:</strong><br>
+                    Senin - Sabtu, 08.00 - 20.00
+                </p>
+
+                <p>
+                    <strong>🍰 Jenis Usaha:</strong><br>
+                    Toko Kue & Dessert
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUK
+    ========================== -->
+    <section id="produk">
+
+        <div class="section-title">
+            <h2>Produk Kami</h2>
+            <p>Pilihan kue favorit dari Manis Bakery</p>
+        </div>
+
+
+        <div class="products">
+
+            <!-- PRODUK 1 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+                    alt="Chocolate Cake"
+                >
+
+                <div class="product-info">
+
+                    <h3>Chocolate Cake</h3>
+
+                    <p>
+                        Kue cokelat lembut dengan rasa cokelat
+                        yang cocok untuk berbagai acara.
+                    </p>
+
+                    <div class="price">
+                        Rp75.000
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Chocolate%20Cake."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 2 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80"
+                    alt="Donat"
+                >
+
+                <div class="product-info">
+
+                    <h3>Donat</h3>
+
+                    <p>
+                        Donat lembut dengan berbagai pilihan
+                        topping yang menarik.
+                    </p>
+
+                    <div class="price">
+                        Rp35.000 / Box
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Donat."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 3 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80"
+                    alt="Cupcake"
+                >
+
+                <div class="product-info">
+
+                    <h3>Cupcake</h3>
+
+                    <p>
+                        Cupcake lembut dengan cream dan
+                        dekorasi yang cantik.
+                    </p>
+
+                    <div class="price">
+                        Rp10.000 / pcs
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Cupcake."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 4 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80"
+                    alt="Brownies"
+                >
+
+                <div class="product-info">
+
+                    <h3>Brownies</h3>
+
+                    <p>
+                        Brownies cokelat dengan tekstur lembut
+                        dan rasa yang kaya.
+                    </p>
+
+                    <div class="price">
+                        Rp50.000
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Brownies."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 5 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80"
+                    alt="Strawberry Cake"
+                >
+
+                <div class="product-info">
+
+                    <h3>Strawberry Cake</h3>
+
+                    <p>
+                        Cake lembut dengan perpaduan cream
+                        dan strawberry segar.
+                    </p>
+
+                    <div class="price">
+                        Rp85.000
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Strawberry%20Cake."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 6 -->
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=600&q=80"
+                    alt="Cheesecake"
+                >
+
+                <div class="product-info">
+
+                    <h3>Cheesecake</h3>
+
+                    <p>
+                        Cheesecake creamy dengan rasa keju
+                        yang lembut dan nikmat.
+                    </p>
+
+                    <div class="price">
+                        Rp90.000
+                    </div>
+
+                    <a
+                        href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20memesan%20Cheesecake."
+                        class="btn"
+                        target="_blank">
+                        Pesan Sekarang
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KEUNGGULAN
+    ========================== -->
+    <section>
+
+        <div class="section-title">
+            <h2>Kenapa Memilih Kami?</h2>
+            <p>Kami berusaha memberikan yang terbaik untuk pelanggan</p>
+        </div>
+
+
+        <div class="advantages">
+
+            <div class="advantage">
+                <div class="icon">🍰</div>
+                <h3>Bahan Berkualitas</h3>
+                <p>
+                    Menggunakan bahan yang berkualitas
+                    untuk menghasilkan rasa terbaik.
+                </p>
+            </div>
+
+            <div class="advantage">
+                <div class="icon">❤️</div>
+                <h3>Dibuat dengan Cinta</h3>
+                <p>
+                    Setiap produk dibuat dengan perhatian
+                    agar memiliki rasa yang konsisten.
+                </p>
+            </div>
+
+            <div class="advantage">
+                <div class="icon">🚚</div>
+                <h3>Siap Dipesan</h3>
+                <p>
+                    Pemesanan mudah melalui WhatsApp
+                    dan dapat disesuaikan dengan kebutuhan.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KONTAK
+    ========================== -->
+    <section class="contact" id="kontak">
+
+        <h2>Ingin Memesan Kue?</h2>
+
+        <p>
+            Hubungi kami melalui WhatsApp untuk melakukan
+            pemesanan atau menanyakan informasi produk.
+        </p>
+
+        <a
+            href="https://wa.me/6281234567890?text=Halo%20Manis%20Bakery,%20saya%20ingin%20bertanya%20tentang%20produk."
+            class="btn"
+            target="_blank">
+            💬 Chat WhatsApp
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            © 2026 Manis Bakery. All Rights Reserved.
+        </p>
+
+        <p>
+            Dibuat dengan ❤️ untuk pelanggan kami.
+        </p>
+
+    </footer>
+
+</body>
+</html>
